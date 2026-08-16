@@ -4,7 +4,7 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
 cp -v $SCRIPT_DIR/assets/pacman.conf /etc/
 pacman -Syy
-pacman -S --noconfirm archlinux-keyring
+pacman -S --noconfirm --needed archlinux-keyring
 pacman-key --init
 pacman-key --populate archlinux
 
