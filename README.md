@@ -53,5 +53,5 @@ Ex.: ./5-set-user.sh -u palmeiras -c 'Palestra Itália' -p 'P@ssw0rd'
 Se o script for executado sem qualquer parâmetro será criado o usuário **arch** com a senha **archlinux**
 
 ```
-curl -s "https://raw.githubusercontent.com/renatas1m03s/Arch-BC250/refs/heads/main/prepare.sh" | sh
+curl -s "https://raw.githubusercontent.com/renatas1m03s/Arch-BC250/refs/heads/main/prepare.sh" | sh && cd /root/Arch-BC250 && ls -la
 ```

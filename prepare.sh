@@ -19,5 +19,3 @@ echo -e "\n############ Downloading setup scripts ############\n"
 
 git clone https://github.com/renatas1m03s/Arch-BC250.git /root/Arch-BC250
 
-cd /root/Arch-BC250
-ls -la
