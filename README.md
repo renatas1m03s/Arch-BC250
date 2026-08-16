@@ -10,8 +10,8 @@ O resultado final é o Arch com as seguintes caracteristicas:
 
 Os scripts estão numerado e devem ser executados em ordem:
 
-- **1-wipe-disk.sh** - Modo de uso: ./1-wipe-disk.sh DISCO_DO_SISTEMA.
-Ex.: ./1-wipe-disk.sh /dev/sda.
+- **1-wipe-disk.sh** - Modo de uso: ./1-wipe-disk.sh DISCO_DO_SISTEMA  
+Ex.: ./1-wipe-disk.sh /dev/sda  
 **Este script formata o disco e apaga todos os dados.**
 
 - **1-root-btrfs.sh** - Modo de uso: ./1-wipe-disk.sh PARTIÇÃO_ESCOLHIDA.  
