@@ -51,7 +51,8 @@ arch-chroot /mnt locale-gen
 echo LANG=en_US.UTF-8 >> /mnt/etc/locale.conf
 echo KEYMAP=$KEYBOARD >> /mnt/etc/vconsole.conf
 echo just4play > /mnt/etc/hostname
-KEYBOARD=$KEYBOARD arch-chroot /mnt bash -c 'localectl set-keymap $KEYBOARD'
+localectl set-keymap $KEYBOARD
+cp -v /etc/vconsole.conf /mnt/etc/vconsole.conf
 
 arch-chroot /mnt pacman -S --noconfirm --needed  dosfstools mtools dialog rsync limine efibootmgr openssh exfat-utils plymouth cronie networkmanager modemmanager inetutils dnsutils git base-devel wget btrfs-progs snapper snap-pac btrfs-assistant inotify-tools
 arch-chroot /mnt pacman -S --noconfirm --needed mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon mesa-utils
