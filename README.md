@@ -22,43 +22,62 @@ Descrição das ações do script acima:
 - Baixa os scripts via git clone na pasta **/root/Arch-BC250**  
 - Vai para a pasta /root/Arch-BC250 e lista seu conteúdo  
 
-# Etapas da instalação
+## Etapas da instalação
 1. [Configuração de disco](#configuração-de-disco)
 2. [Ajustes no pacman](#ajustes-no-pacman)
-3. Instalação do sistema
+3. [Instalação do sistema](instalação-do-sistema)
 4. Configuração do bootloader
 5. Configuração do usuário
 
 Os scripts estão numerado e devem ser executados em ordem:
 
-##Configuração de disco  
-Essa etapa pode ser feita automaticamente através a execução de scripts ou pode ser feita manualmente.
+## Configuração de disco  
+Essa etapa pode ser feita automaticamente através da execução do script ou pode ser feita manualmente.
 
 O resultado da execução do script é que o disco escolhido ficará dividido em duas partições:  
-- Uma partição de **4G**, formatada com **FAT32** e montada em /mnt/boot.
+  
+- Uma partição de **4096MiB/4GiB**, formatada com **FAT32** e montada em /mnt/boot.
 - Uma partição com o restante da área do disco, formatada como **BTRFS**.
 - Os seguintes subvolumes do BTRFS:  
-  - @
-
-- **1-wipe-disk.sh** - Modo de uso: ./1-wipe-disk.sh DISCO_DO_SISTEMA  
-Ex.: ./1-wipe-disk.sh /dev/sda  
-**Este script formata o disco e apaga todos os dados.**  
+  - @      - Montado como /mnt (root)  
+  - @home  - Montado como /mnt/home  
+  - @root  - Montado como /mnt/root  
+  - @cache - Montado como /mnt/var/cache  
+  - @log   - Montado como /mnt/var/log  
+  - @tmp   - Montado como /mnt/var/tmp  
+  - @Data  - Montado como /mnt/mnt/Data  
+  - swap   - Montado como /mnt/swap  
+- Um arquivo de swap em /mnt/swap/swapfile de **8GB**  
   
-  **ou**  
+Caso se deseje usar uma configuração diferente, basta respeitar três condições:  
+1. Partição FAT32 como /boot  
+2. Estrutura do root "/" montada em /mnt  
+3. Swap configurado como arquivo para tirar proveito do ZSWAP  
     
-- **1-root-btrfs.sh** - Modo de uso: ./1-wipe-disk.sh PARTIÇÃO_ESCOLHIDA.  
-Ex.: ./1-wipe-disk.sh /dev/sda2  
-Esse script vai formatar uma partição como BTRFS. Alternativa ao uso do disco inteiro.  
+O script em questão é o **1-wipe-disk.sh** e ele recebe como parâmetro o disco onde o arch será instalado.  
+Para listar os discos existentes no ambiente o melhor comando é o:
+```
+fdisk -l
+```
+Supondo do que disco seja um NVME identificado como **/dev/nvme0n1** a execução do script seria:  
   
-  **ou**  
-    
-- **1-root-btrfs-no-home.sh** - Modo de uso: ./1-wipe-disk.sh PARTIÇÃO_ESCOLHIDA  
-Ex.: ./1-wipe-disk.sh /dev/sda2  
-Esse script vai formatar uma partição como BTRFS, mas sem o home. Alternativa ao uso do disco inteiro.  
+   **./1-wipe-disk.sh /dev/nvme0n1**  
+  
+**IMPORTANTE: Esse script formata/apaga todos os dados do disco escolhido** 
     
 ## Ajustes no pacman
-- **2-set-pacman.sh** - Modo de uso: ./2-set-pacman.sh  
-Configura o pacman inserindo o repositório do kernel modificado para a BC-250  
+O script **2-set-pacman.sh** faz alguns ajustes no arquivo **pacman.conf**, são eles:  
+- Habilitar a multilib do arch, que é a biblioteca 32bits.  
+- Habilitar o respositório para o kernel customizado para a BC250. Isso não tem efeito colateral algum em PCs diferentes da BC250.  
+- Habilitar algumas itens cosméticos, como por exemplo o download paralelo em 8 filas. 
+
+Além desses ajustes o script executa o utilitário **reflector** que atualiza a lista de mirrors e classifica por taxa de download.   
+  
+Modo de uso:
+
+   **./2-set-pacman.sh**  
+   
+## Instalação do sistema
 
 - **3-base-system-bc250.sh** - Mode de uso: ./3-base-system-bc250.sh -k KEYMAP -t TIMEZONE -s HOSTNAME 
 Ex. /3-base-system-bc250.sh -k br-abnt2 -t America/Sao_Paulo -s linuxtest
