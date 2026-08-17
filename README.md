@@ -23,8 +23,8 @@ curl -s "https://raw.githubusercontent.com/renatas1m03s/Arch-BC250/refs/heads/ma
 Descrição das ações do script acima:  
     
 - Atualiza as chaves PGP de assinatura dos pacotes do Arch Linux.  
-- Instalação das ferramentas **git** e **p7zip**  
-- Baixa os scripts via git clone na pasta **/root/Arch-BC250**  
+- Instalação das ferramentas **"git"** e **"p7zip"**  
+- Baixa os scripts via git clone na pasta **"/root/Arch-BC250"**  
 - Vai para a pasta /root/Arch-BC250 e lista seu conteúdo  
 
 ## Etapas da instalação  
@@ -68,7 +68,7 @@ Use o seguinte comando para identificar o disco onde se pretende realizar a inst
 
 > **fdisk -l**
 
-Supondo do que disco seja um NVME identificado como **/dev/nvme0n1** a execução do script seria:  
+Supondo do que disco seja um NVME identificado como **"/dev/nvme0n1"** a execução do script seria:  
   
 > **./1-wipe-disk.sh /dev/nvme0n1**  
 
@@ -76,12 +76,12 @@ Supondo do que disco seja um NVME identificado como **/dev/nvme0n1** a execuçã
 > Esse script formata/apaga todos os dados do disco escolhido  
     
 ## Ajustes no pacman
-O script **"2-set-pacman.sh"** faz alguns ajustes no arquivo **pacman.conf**, são eles:  
+O script **"2-set-pacman.sh"** faz alguns ajustes no arquivo **"pacman.conf"**, são eles:  
 - Habilitar a multilib do arch, que é a biblioteca 32bits (necessária para a steam).  
 - Habilitar o respositório para o kernel customizado para a BC250. Isso não tem efeito colateral algum em PCs diferentes da BC250.  
 - Habilitar algumas itens cosméticos, como por exemplo o download paralelo em 8 filas. 
 
-Além desses ajustes o script executa o utilitário **reflector** que atualiza a lista de mirrors e classifica por taxa de download.   
+Além desses ajustes o script executa o utilitário **"reflector"** que atualiza a lista de mirrors e classifica por taxa de download.   
   
 > Modo de uso:
 
@@ -91,12 +91,12 @@ Além desses ajustes o script executa o utilitário **reflector** que atualiza a
 Existem dois scripts o **"3-base-system-bc250.sh"** e o **"3-base-system.sh"** que mudam entre si somente o kernel que eles entregam, ambos executam as seguintes atividades:  
   
 1. Criam a estrutura de pastas de sistema do Arch Linux.  
-2. Geram o arquivo **fstab**  
+2. Geram o arquivo **"fstab"**  
 3. Definem as configurações regionais e o hostname (Defaults: br-abnt2, America/Sao_Paulo e just4play como hostname)  
 4. Instalam os arquivos base do Arch Linux, bliblioteca mesa, plasma/kde e alguns utilitários.  
 5. Habilitam alguns serviços básicos (NetworkManager, sshd, plasmalogin, avahi-daemon e bluetooth)  
   
-Os kernels entregues são **linux-cachyos-bc250** e **linux-zen**, respectivamente.
+Os kernels entregues são **"linux-cachyos-bc250"** e **"linux-zen"**, respectivamente.
     
 > Modo de uso: ./3-base-system.sh \[opções\]  
 > Opções:  
@@ -123,15 +123,15 @@ Use o seguinte comando para identificar o disco onde se pretende realizar a inst
 
 > **fdisk -l**
 
-Supondo do que disco seja um NVME identificado como **/dev/nvme0n1** a execução do script seria:  
+Supondo do que disco seja um NVME identificado como **"/dev/nvme0n1"** a execução do script seria:  
   
 > **./4-set-limine.sh /dev/nvme0n1**  
   
 ## Configuração do usuário
-O script **5-set-user.sh** se executado sem qualquer parâmetro entrega:  
+O script **"5-set-user.sh"** se executado sem qualquer parâmetro entrega:  
   
-  - Um usuário chamado **arch**, com a descrição **Arch User**;  
-  - Usuário **root** e **arch** com a mesma senha **archlinux**;  
+  - Um usuário chamado **"arch"**, com a descrição **"Arch User"**;  
+  - Usuário **"root"** e **"arch"** com a mesma senha **"archlinux"**;  
   
 Para alterar qualquer um dessas opções, podemos passá-los como parâmetros:  
 
@@ -149,10 +149,10 @@ Além da configuração dos usuários, esse script entrega:
   
   - Usuário com privilégio de sudo  
   - Arquivo de configuração do Alacritty já na pasta do usuário  
-  - KDE/Plasma configurado em inglês, mas com unidades, métricas e parâmetros regionais em **pt-BR**
+  - KDE/Plasma configurado em inglês, mas com unidades, métricas e parâmetros regionais em **"pt-BR"**
   - Instala um pacote de ícones [Tela-icon-theme](https://github.com/vinceliuice/Tela-icon-theme)
-  - Alguns wallpapers do Arch copiados para a pasta **Pictures**
-  - Copia todos esses scripts para a pasta **~/Arch-BC250**  
+  - Alguns wallpapers do Arch copiados para a pasta **"~/Pictures"**
+  - Copia todos esses scripts para a pasta **"~/Arch-BC250"**  
 
 
 
