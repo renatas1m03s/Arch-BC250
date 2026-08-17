@@ -111,7 +111,7 @@ Os kernels entregues são **"linux-cachyos-bc250"** e **"linux-zen"**, respectiv
 > [!TIP]  
 > Os parâmetros são opcionais e independentes, você pode alterar qualquer um deles individualmente.
   
-Se não for passado qualquer parâmetro o default é teclado br-abnt2, timezone America/Sao_Paulo e hostname just4play
+Se não for passado qualquer parâmetro o default é teclado **"br-abnt2"**, timezone **"America/Sao_Paulo"** e hostname **"just4play"**
 Esse script instala o sistema operacional, com o kernel personalizado para a BC-250, além da interface gráfica.  
   
 ## Configuração do bootloader
