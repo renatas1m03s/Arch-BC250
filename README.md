@@ -29,9 +29,9 @@ Esse script vai formatar uma partição como BTRFS, mas sem o home. Alternativa 
 - **2-set-pacman.sh** - Modo de uso: ./2-set-pacman.sh  
 Configura o pacman inserindo o repositório do kernel modificado para a BC-250  
 
-- **3-base-system-bc250.sh** - Mode de uso: ./3-base-system-bc250.sh -k KEYMAP -t TIMEZONE  
-Ex. /3-base-system-bc250.sh -k br-abnt2 -t America/Sao_Paulo  
-Se não for passado qualquer parâmetro o default é o teclado br-abnt2 e a timezone America/Sao_Paulo.  
+- **3-base-system-bc250.sh** - Mode de uso: ./3-base-system-bc250.sh -k KEYMAP -t TIMEZONE -s HOSTNAME 
+Ex. /3-base-system-bc250.sh -k br-abnt2 -t America/Sao_Paulo -s linuxtest
+Se não for passado qualquer parâmetro o default é o teclado br-abnt2, timezone America/Sao_Paulo e hostname just4play
 Esse script instala o sistema operacional, com o kernel personalizado para a BC-250, além da interface gráfica.  
   
   **ou**  
