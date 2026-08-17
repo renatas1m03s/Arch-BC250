@@ -1,5 +1,5 @@
 ## Sobre
-Este é um conjunto de scripts para facilitar a instalação do Arch Linux, principalmente em uma placa AsRcok BC-250, mas ele pode ser usado em qualquer plataforma **x64/EFI**.  
+Este é um conjunto de scripts para facilitar a instalação do Arch Linux, principalmente em uma placa AsRocok BC-250, mas ele pode ser usado em qualquer plataforma **x64/EFI**.  
   
 ## Características da instalação
 Como resultado final da instalação teremos um Arch Linux com as seguintes características:  
@@ -34,6 +34,7 @@ Descrição das ações do script acima:
 3. [Instalação do sistema](#instalação-do-sistema)
 4. [Configuração do bootloader](#configuração-do-bootloader)
 5. [Configuração do usuário](#configuração-do-usuário)
+6. [Scripts adicionais](#scripts-adicionais)
 
 > [!TIP]  
 > Os scripts estão numerado e devem ser executados em ordem.  
@@ -153,6 +154,22 @@ Além da configuração dos usuários, esse script entrega:
   - Instala um pacote de ícones [Tela-icon-theme](https://github.com/vinceliuice/Tela-icon-theme)
   - Alguns wallpapers do Arch copiados para a pasta **"~/Pictures"**
   - Copia todos esses scripts para a pasta **"~/Arch-BC250"**  
-
-
-
+  
+## Scripts adicionais
+Como dito logo acima, a pasta que foi feito o download do github **"Arch-BC250"** é copiada para o **"~/"** (home do usuário).  
+Dentro dessa pasta temos uma outra **"~/Arch-BC250/scripts"** que contém três deles a serem executados após o login no KDE/Plasma, são eles:  
+  
+  - **"yay.sh"** que faz a instalação do gerenciador de pacotes do AUR.  
+```
+~/Arch-BC250/scripts/yay.sh  
+```  
+  
+  - **"config-limine.sh"** que termina de fazer a configuração limine e integra aos snapshots do BTRFS.  
+```  
+sudo ~/Arch-BC250/scripts/config-limine.sh
+```
+  
+  - **"gaming-setup.sh"** Instala a **"Steam"**, **"retroarch"** e o **"ES-DE"**, além do modo gaming no login.  
+```
+~/Arch-BC250/scripts/gaming-setup.sh
+```
