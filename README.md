@@ -29,12 +29,12 @@ Descrição das ações do script acima:
 4. Configuração do bootloader
 5. Configuração do usuário
 
-Os scripts estão numerado e devem ser executados em ordem:
+´´Os scripts estão numerado e devem ser executados em ordem:´´
 
-## Configuração de disco  
+## 1-Configuração de disco  
 Essa etapa pode ser feita automaticamente através da execução do script ou pode ser feita manualmente.
 
-O resultado da execução do script é que o disco escolhido ficará dividido em duas partições:  
+O resultado da execução do script é:  
   
 - Uma partição de **4096MiB/4GiB**, formatada com **FAT32** e montada em /mnt/boot.
 - Uma partição com o restante da área do disco, formatada como **BTRFS**.
@@ -50,24 +50,25 @@ O resultado da execução do script é que o disco escolhido ficará dividido em
 - Um arquivo de swap em /mnt/swap/swapfile de **8GB**  
   
 Caso se deseje usar uma configuração diferente, basta respeitar três condições:  
-1. Partição FAT32 como /boot  
+1. Partição FAT32 como ESP e montada em /mnt/boot   
 2. Estrutura do root "/" montada em /mnt  
 3. Swap configurado como arquivo para tirar proveito do ZSWAP  
     
-O script em questão é o **1-wipe-disk.sh** e ele recebe como parâmetro o disco onde o arch será instalado.  
+O script em questão é o **"1-wipe-disk.sh"** e ele recebe como parâmetro o disco onde o arch será instalado.  
 Para listar os discos existentes no ambiente o melhor comando é o:
-```
-fdisk -l
-```
+
+> fdisk -l
+
 Supondo do que disco seja um NVME identificado como **/dev/nvme0n1** a execução do script seria:  
   
-   **./1-wipe-disk.sh /dev/nvme0n1**  
-  
-**IMPORTANTE: Esse script formata/apaga todos os dados do disco escolhido** 
+> ./1-wipe-disk.sh /dev/nvme0n1  
+
+> [!IMPORTANT]  
+> IMPORTANTE: Esse script formata/apaga todos os dados do disco escolhido  
     
-## Ajustes no pacman
-O script **2-set-pacman.sh** faz alguns ajustes no arquivo **pacman.conf**, são eles:  
-- Habilitar a multilib do arch, que é a biblioteca 32bits.  
+## 2-Ajustes no pacman
+O script **"2-set-pacman.sh"** faz alguns ajustes no arquivo **pacman.conf**, são eles:  
+- Habilitar a multilib do arch, que é a biblioteca 32bits (necessária para a steam).  
 - Habilitar o respositório para o kernel customizado para a BC250. Isso não tem efeito colateral algum em PCs diferentes da BC250.  
 - Habilitar algumas itens cosméticos, como por exemplo o download paralelo em 8 filas. 
 
@@ -77,8 +78,25 @@ Modo de uso:
 
    **./2-set-pacman.sh**  
    
-## Instalação do sistema
+## 3-Instalação do sistema
+O script **"3-base-system-bc250.sh"** executa as seguintes atividades:  
+1. Cria a estrutura de pastas de sistema do Arch Linux.  
+2. Gera o arquivo **fstab**  
+3. Define as configurações regionais e o hostname (Defaults: br-abnt2, America/Sao_Paulo e just4play como hostname)  
+4. Instala os arquivos base do Arch Linux, bliblioteca mesa, plasma/kde e alguns utilitários.  
+5. Habilita alguns serviços básicos (NetworkManager, sshd, plasmalogin, avahi-daemon e bluetooth)  
+  
+O script aceita a passagem dos parâmetros keymap do teclado, timezone e hostname.  
 
+  
+> Modo de uso: ./3-base-system.sh \[opções\]  
+> Opções:  
+>   -k, --keyboard VALOR    # Keyboard - default br-abnt2      
+>   -t, --timezone VALOR    # Timezone - default America/Sao_Paulo     
+>   -s, --system            # Hostname - default just4play    
+>   -h, --help              # Display this help message  
+  
+  
 - **3-base-system-bc250.sh** - Mode de uso: ./3-base-system-bc250.sh -k KEYMAP -t TIMEZONE -s HOSTNAME 
 Ex. /3-base-system-bc250.sh -k br-abnt2 -t America/Sao_Paulo -s linuxtest
 Se não for passado qualquer parâmetro o default é o teclado br-abnt2, timezone America/Sao_Paulo e hostname just4play
