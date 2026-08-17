@@ -29,8 +29,9 @@ Descrição das ações do script acima:
 4. Configuração do bootloader
 5. Configuração do usuário
 
-´´Os scripts estão numerado e devem ser executados em ordem:´´
-
+> [!TIP]  
+> Os scripts estão numerado e devem ser executados em ordem.  
+  
 ## 1-Configuração de disco  
 Essa etapa pode ser feita automaticamente através da execução do script ou pode ser feita manualmente.
 
@@ -64,7 +65,7 @@ Supondo do que disco seja um NVME identificado como **/dev/nvme0n1** a execuçã
 > ./1-wipe-disk.sh /dev/nvme0n1  
 
 > [!IMPORTANT]  
-> IMPORTANTE: Esse script formata/apaga todos os dados do disco escolhido  
+> Esse script formata/apaga todos os dados do disco escolhido  
     
 ## 2-Ajustes no pacman
 O script **"2-set-pacman.sh"** faz alguns ajustes no arquivo **pacman.conf**, são eles:  
@@ -74,9 +75,9 @@ O script **"2-set-pacman.sh"** faz alguns ajustes no arquivo **pacman.conf**, s�
 
 Além desses ajustes o script executa o utilitário **reflector** que atualiza a lista de mirrors e classifica por taxa de download.   
   
-Modo de uso:
+> Modo de uso:
 
-   **./2-set-pacman.sh**  
+> ./2-set-pacman.sh  
    
 ## 3-Instalação do sistema
 O script **"3-base-system-bc250.sh"** executa as seguintes atividades:  
@@ -91,10 +92,10 @@ O script aceita a passagem dos parâmetros keymap do teclado, timezone e hostnam
   
 > Modo de uso: ./3-base-system.sh \[opções\]  
 > Opções:  
->   -k, --keyboard VALOR    # Keyboard - default br-abnt2      
->   -t, --timezone VALOR    # Timezone - default America/Sao_Paulo     
->   -s, --system            # Hostname - default just4play    
->   -h, --help              # Display this help message  
+>   -k, --keyboard VALOR&nbsp;&nbsp;&nbsp;&nbsp;# Keyboard - default br-abnt2      
+>   -t, --timezone VALOR&nbsp;&nbsp;&nbsp;&nbsp;# Timezone - default America/Sao_Paulo     
+>   -s, --system&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Hostname - default just4play    
+>   -h, --hel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Display this help message  
   
   
 - **3-base-system-bc250.sh** - Mode de uso: ./3-base-system-bc250.sh -k KEYMAP -t TIMEZONE -s HOSTNAME 
