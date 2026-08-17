@@ -52,6 +52,7 @@ else
 
 		sed -i s/MODULES=\(\)/MODULES=\(lz4\)/g /mnt/etc/mkinitcpio.conf
 		arch-chroot /mnt mkinitcpio -P
+
 	else
 		echo -e "\nDisco $DISK não encontrado.\n"
 	fi

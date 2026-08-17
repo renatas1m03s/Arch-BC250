@@ -8,13 +8,13 @@ else
 	LIMINET_MKINITCPIO_HOOK=$(curl -s "https://packages.cachyos.org/package/cachyos/x86_64/limine-mkinitcpio-hook" | lynx -stdin -dump | grep https | grep zst | awk '{print $2}')
 	wget -P /tmp $LIMINET_MKINITCPIO_HOOK
 	LIMINET_MKINITCPIO_HOOK_PACKAGE=$(ls /tmp/limine-mk*zst)
-	pacman -U $LIMINET_MKINITCPIO_HOOK_PACKAGE
+	pacman --noconfirm --needed -U $LIMINET_MKINITCPIO_HOOK_PACKAGE
 
 	## Instala o limine-snapper-sync
 	LIMINE_SNAPPER_SYNC=$(curl -s "https://packages.cachyos.org/package/cachyos/x86_64/limine-snapper-sync" | lynx -stdin -dump | grep https | grep zst | awk '{print $2}')
 	wget -P /tmp $LIMINE_SNAPPER_SYNC
 	LIMINE_SNAPPER_SYNC_PACKAGE=$(ls /tmp/limine-sna*zst)
-	pacman -U $LIMINE_SNAPPER_SYNC_PACKAGE
+	pacman --noconfirm --needed -U $LIMINE_SNAPPER_SYNC_PACKAGE
 	
 	#Configura um snapshot do BTRFS
 	if [ ! -f "/etc/snapper/configs/root" ]; then
@@ -42,6 +42,7 @@ else
 	term_background_bright: ffffffff
 	term_foreground_bright: cdd6f4
 	wallpaper: boot():/limine-splash.png
+	
 	EOF
 
 	## Cria os parametros de configuração para o limine-update

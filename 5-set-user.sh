@@ -81,10 +81,10 @@ fi
 tar Jxvf $TELAICONS_FILE -C $TELAICONS_PATH
 
 # Copia os scripts de instalação para a pasta do usuário
-if [ ! -d "/mnt/home/$USER/ArchInstall" ]; then
-	mkdir -pv /mnt/home/$USER/ArchInstall
+if [ ! -d "/mnt/home/$USER/Arch-BC250" ]; then
+	mkdir -pv /mnt/home/$USER/Arch-BC250
 fi
-cp -Rv $SCRIPT_DIR/* /mnt/home/$USER/ArchInstall
+cp -Rv $SCRIPT_DIR/* /mnt/home/$USER/Arch-BC250
 
 # Corrige as permissões ao final
 USER=$USER arch-chroot /mnt bash -c 'chown -R $USER:users /home/$USER/'
