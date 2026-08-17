@@ -12,10 +12,7 @@ Como resultado final da instalação teremos um Arch Linux com as seguintes cara
 - Arquivo de SWAP com ZSWAP  
   
 ## Acesso rápido aos scripts
-```
-curl -s "https://bit.ly/arch-bc250" | sh && cd /root/Arch-BC250 && ls -la
-```
-O link real é: 
+
 ```
 curl -s "https://raw.githubusercontent.com/renatas1m03s/Arch-BC250/refs/heads/main/prepare.sh | sh && cd /root/Arch-BC250 && ls -la"**
 ```
@@ -26,6 +23,20 @@ Descrição das ações do script acima:
 - Instalação das ferramentas **"git"** e **"p7zip"**  
 - Baixa os scripts via git clone na pasta **"/root/Arch-BC250"**  
 - Vai para a pasta /root/Arch-BC250 e lista seu conteúdo  
+
+> [!TIP]  
+> Alternativamente aos passos automatizados acima é possível fazer manualmente da seguinte forma:  
+  
+1. Instala o **"git"** 
+```
+pacman -Sy --noconfirm git
+```  
+
+2. Faz o download dos scripts  
+```
+git clone https://github.com/renatas1m03s/Arch-BC250 /root/Arch-BC250
+```
+
 
 ## Etapas da instalação  
   
