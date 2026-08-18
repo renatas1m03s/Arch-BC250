@@ -1,5 +1,7 @@
 ## Sobre
-Este é um conjunto de scripts para facilitar a instalação do Arch Linux, inicialmente em uma placa AsRock BC-250, mas ele pode ser usado em qualquer plataforma **x64/EFI** sem qualquer efeito colateral.  
+Este é um conjunto de scripts para facilitar a instalação do Arch Linux, inicialmente em uma placa AsRock BC-250, mas ele pode ser usado em qualquer plataforma **x64/EFI** sem qualquer efeito colateral.
+  
+[Video tutorial sobre esses scripts](https://youtu.be/WtYD9GYw0Z8)
   
 ## Características da instalação
 Como resultado final da instalação teremos um Arch Linux com as seguintes características:  
