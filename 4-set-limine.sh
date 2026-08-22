@@ -10,7 +10,8 @@ else
 		ROOT_PARTITION=$(mount | grep "subvol=/@)" | awk '{print $1}')
 		ROOT_PARTITION_UUID=$(lsblk -no UUID $ROOT_PARTITION)
 		SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
-
+		PLYMOUTH_HOOK=$(cat /etc/mkinitcpio.conf | grep ^HOOKS | grep plymouth)
+		
 		cp -v $SCRIPT_DIR/assets/limine-splash.png /mnt/boot/
 		mkdir -p /mnt/boot/EFI/arch-limine
 		cp -v /mnt/usr/share/limine/BOOTX64.EFI /mnt/boot/EFI/arch-limine
@@ -49,7 +50,20 @@ else
 		When = PostTransaction
 		Exec = /usr/bin/cp /usr/share/limine/BOOTX64.EFI boot/EFI/arch-limine/
 		EOF
+		
+		if [ ! -d "/usr/share/plymouth/themes/" ]; then
+			mkdir -vp /usr/share/plymouth/themes
+		fi
+		cp -rv $SCRIPT_DIR/assets/PoweredByArchV2 /usr/share/plymouth/themes/
+		
+		if [ ! -d "/etc/plymouth" ]; then
+			mkdir -v /etc/plymouth
+		fi
+		cp -v $SCRIPT_DIR/assets/plymouthd.conf /etc/plymouth
 
+		if [[ ! -n "$PLYMOUTH_HOOK" ]]; then
+			sed -i '/^HOOKS=/s/)[[:space:]]*$/ plymouth&/' /etc/mkinitcpio.conf
+		fi
 		sed -i s/MODULES=\(\)/MODULES=\(lz4\)/g /mnt/etc/mkinitcpio.conf
 		arch-chroot /mnt mkinitcpio -P
 

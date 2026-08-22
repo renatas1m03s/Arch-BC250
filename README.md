@@ -16,7 +16,7 @@ Como resultado final da instalação teremos um Arch Linux com as seguintes cara
 ## Acesso rápido aos scripts
 
 ```
-curl -s "https://raw.githubusercontent.com/renatas1m03s/Arch-BC250/refs/heads/main/prepare.sh | sh && cd /root/Arch-BC250 && ls -la"**
+curl -s "https://raw.githubusercontent.com/renatas1m03s/Arch-BC250/refs/heads/main/prepare.sh" | sh && cd /root/Arch-BC250 && ls -la
 ```
   
 Descrição das ações do script acima:  
