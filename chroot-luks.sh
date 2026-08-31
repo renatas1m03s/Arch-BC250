@@ -7,7 +7,7 @@ else
 	if [ -b "$DISK" ]; then
 		BOOT=$(fdisk -l $DISK | grep Microsoft | awk '{print $1}'); # Identifica a partição EFI/ESP
 		ROOT_LUKS=$(fdisk -l $DISK | grep Linux | awk '{print $1}'); # Identifica a partição Root
-		cryptsetup $ROOT_LUKS root
+		cryptsetup open $ROOT_LUKS root
 		ROOT="/dev/mapper/root"; # Identifica a partição root
 		mount -o defaults,noatime,compress=zstd,commit=120,subvol=@ $ROOT /mnt;
 		mount -o defaults,noatime,compress=zstd,commit=120,subvol=@home $ROOT /mnt/home;
