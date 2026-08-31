@@ -43,7 +43,7 @@ done
 
 echo -e "\nTeclado: $KEYBOARD, Timezone: $TIMEZONE e Hostname: $HOSTNAME\n"
 
-pacstrap -K /mnt base linux-firmware linux-zen linux-zen-headers dkms base-devel amd-ucode reflector nano sudo vim fish
+pacstrap -K /mnt base linux-firmware linux-zen linux-zen-headers dkms base-devel amd-ucode reflector nano sudo vim fish sof-firmware
 
 genfstab -U /mnt >> /mnt/etc/fstab
 

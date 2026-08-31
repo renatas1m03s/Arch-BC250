@@ -51,15 +51,15 @@ else
 		Exec = /usr/bin/cp /usr/share/limine/BOOTX64.EFI boot/EFI/arch-limine/
 		EOF
 		
-		if [ ! -d "/usr/share/plymouth/themes/" ]; then
-			mkdir -vp /usr/share/plymouth/themes
+		if [ ! -d "/mnt/usr/share/plymouth/themes/" ]; then
+			mkdir -vp /mnt/usr/share/plymouth/themes
 		fi
-		cp -rv $SCRIPT_DIR/assets/PoweredByArchV2 /usr/share/plymouth/themes/
+		cp -rv $SCRIPT_DIR/assets/PoweredByArchV2 /mnt/usr/share/plymouth/themes
 		
-		if [ ! -d "/etc/plymouth" ]; then
-			mkdir -v /etc/plymouth
+		if [ ! -d "/mnt/etc/plymouth" ]; then
+			mkdir -v /mnt/etc/plymouth
 		fi
-		cp -v $SCRIPT_DIR/assets/plymouthd.conf /etc/plymouth
+		cp -v $SCRIPT_DIR/assets/plymouthd.conf /mnt/etc/plymouth
 
 		if [[ ! -n "$PLYMOUTH_HOOK" ]]; then
 			sed -i '/^HOOKS=/s/)[[:space:]]*$/ plymouth&/' /etc/mkinitcpio.conf
