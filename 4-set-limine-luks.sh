@@ -8,7 +8,7 @@ else
 		INITRAMFS=$(ls /mnt/boot/init* | awk -F"/" '{print $4}')
 		VMLINUZ=$(ls /mnt/boot/vmli* | awk -F"/" '{print $4}')
 		ROOT_PARTITION=$(fdisk -l $DISK | grep Linux | awk '{print $1}')
-		ROOT_PARTITION_UUID=$($blkid -s UUID -o value $ROOT_PARTITION)
+		ROOT_PARTITION_UUID=$(blkid -s UUID -o value $ROOT_PARTITION)
 		SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 		PLYMOUTH_HOOK=$(cat /etc/mkinitcpio.conf | grep ^HOOKS | grep plymouth)
 		
