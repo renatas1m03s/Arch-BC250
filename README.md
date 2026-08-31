@@ -10,7 +10,7 @@ Como resultado final da instalação teremos um Arch Linux com as seguintes cara
 - Desktop Enviromento: KDE/Plasma
 - Alguns utilitários e aplicativos: Firefox, VLC, btop e yt-dl dentre outros.  
 - Sistema de arquivos: BTRFS
-- Bootloader: Limine
+- Bootloader: Limine  
 - Arquivo de SWAP com ZSWAP  
   
 ## Acesso rápido aos scripts
