@@ -65,5 +65,5 @@ arch-chroot /mnt pacman -S --noconfirm --needed lib32-pipewire gnome-disk-utilit
 arch-chroot /mnt pacman -S --noconfirm --needed firefox vlc vlc-plugin-ffmpeg geany geany-plugins fastfetch openvpn usb_modeswitch p7zip unzip btop rocm-smi-lib adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji yt-dlp lynx
 
 # Inicia os daemons NetworkManager, sshd, plasmalogin, avahi-daemon, bluetooth
-arch-chroot /mnt systemctl enable {NetworkManager,sshd,plasmalogin,avahi-daemon,bluetooth,tuned}
+arch-chroot /mnt bash -c "systemctl enable {NetworkManager,sshd,cosmic-greeter,avahi-daemon,bluetooth,tuned}"
 
