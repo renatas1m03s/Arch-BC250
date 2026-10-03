@@ -10,8 +10,8 @@ else
 				case "$response" in
 					[sS]) BOOT=$(fdisk -l $DISK | grep EFI | awk '{print $1}'); # Identifica a partição EFI/ESP
 					      ROOT=$(fdisk -l $DISK | grep Linux | awk '{print $1}'); # Identifica a partição root
-   					      mount -o clear_cache $ROOT /mnt;
-				              btrfs subvolume create /mnt/{@,@home,@root,@cache,@log,@tmp,swap};
+					      mount -o clear_cache $ROOT /mnt;
+					      btrfs subvolume create /mnt/{@,@home,@root,@cache,@log,@tmp,swap};
 					      umount /mnt;
 					      mount -o defaults,noatime,compress=zstd,commit=120,subvol=@ $ROOT /mnt;
 					      mkdir -vp /mnt/{home,root,var/cache,var/log,var/tmp,mnt/Data,swap,boot};
@@ -24,7 +24,7 @@ else
 					      mount -o defaults,noatime,compress=zstd,commit=120,subvol=swap $ROOT /mnt/swap;
 					      mount $BOOT /mnt/boot;
 					      echo -e "\nTopologia de disco e swap:\n";
-				              mount | grep $DISK;
+					      mount | grep $DISK;
 					      btrfs filesystem mkswapfile --size 8G --uuid clear /mnt/swap/swapfile;
 					      swapon /mnt/swap/swapfile;
 					      break;;
